@@ -47,41 +47,14 @@ class MyCloneable
     }
 }
 
+$obj = new MyCloneable();
+$obj->object1 = new SubObject();
+$obj->object2 = new SubObject();
 
-class Test
-{
-    static public function getNew() {
-        return new static;
-    }
-}
+$obj2 = clone $obj;
 
-class Child extends Test{}
+print("Original object\n");
+print_r($obj);
 
-$obj1 = new Test();
-$obj2 = new $obj1();
-var_dump($obj1);
-var_dump($obj2);
-var_dump($obj1 === $obj2);
-
-$obj3 = Test::getNew();
-var_dump($obj3 instanceof Test);
-
-$obj4 = Child::getNew();
-var_dump($obj4 instanceof Test);
-
-echo (new DateTime())->format('Y');
-echo 'Hello';
-
-
-//
-//$instance = new A;
-//$assigned   =  $instance;
-//$instance->var = '$assigned will have this value';
-//
-//$reference  =& $instance;
-//
-//
-//
-//
-//var_dump($assigned);
-//var_dump($reference);
+print("Cloned object\n");
+print_r($obj2);
