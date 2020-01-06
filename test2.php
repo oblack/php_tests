@@ -56,20 +56,21 @@ print_r($obj2);
 
 
 
+
 trait TestTrait {
-    public static $_bar;
+    public function testMethod() {
+        echo "Class: " . __CLASS__ . PHP_EOL;
+        echo "Trait: " . __TRAIT__ . PHP_EOL;
+    }
 }
 
-class FooBar {
+class BaseClass {
     use TestTrait;
 }
 
-class Foo1 extends FooBar {
+class TestClass extends BaseClass {
 
 }
-class Foo2 extends FooBar {
 
-}
-Foo1::$_bar = 'Hello';
-Foo2::$_bar = 'World';
-echo Foo1::$_bar . ' ' . Foo2::$_bar; // Prints: World World
+$t = new TestClass();
+$t->testMethod();
