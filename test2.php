@@ -24,6 +24,23 @@ class MyCloneable
     }
 }
 
+trait myTrait {
+    function myFunction() {
+        print "inside trait\n\n";
+    }
+}
+
+class myTraitClass {
+    use myTrait;
+
+    public function testTrait() {
+        $this->myFunction();
+    }
+}
+
+$traitTest = new myTraitClass();
+$traitTest->testTrait();
+
 $obj = new MyCloneable();
 
 $obj->object1 = new SubObject();
@@ -36,3 +53,23 @@ print_r($obj);
 
 print("Cloned object\n");
 print_r($obj2);
+
+
+
+trait TestTrait {
+    public static $_bar;
+}
+
+class FooBar {
+    use TestTrait;
+}
+
+class Foo1 extends FooBar {
+
+}
+class Foo2 extends FooBar {
+
+}
+Foo1::$_bar = 'Hello';
+Foo2::$_bar = 'World';
+echo Foo1::$_bar . ' ' . Foo2::$_bar; // Prints: World World

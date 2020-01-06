@@ -3,6 +3,7 @@
 class MyClass
 {
 
+    public $whatever = 4;
     private $myArray = array();
 
     function pushToClassArray($var)
@@ -27,3 +28,4 @@ $myObj->pushToClassArray('pink');
 //testing
 print_r($myObj->getArray());     //Array([0] => blue,[1] => orange,[2] => pink)
 print_r($myObjClone->getArray());//Array([0] => blue,[1] => orange)
+print_r($myObj->whatever);
